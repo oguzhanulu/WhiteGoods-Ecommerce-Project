@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<style>
+		/* Aktif olan menü başlığının rengini siyah yap */
+		.menu-title.active {
+			color: black !important;
+		}
+	</style>
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="~/purple/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="~/purple/vendors/css/vendor.bundle.base.css">
+	<!-- endinject -->
+	<!-- inject:css -->
+	<link rel="stylesheet" href="~/purple/css/style.css">
+	<!-- endinject -->
+	<link rel="shortcut icon" href="~/purple/images/favicon.png">
+	
+</head>
+<body>
+	<style>
+	.left-menu li {
+	color: #000; /* Tüm menü öğelerinin varsayılan rengi */
+	}
+
+	.left-menu li.selected {
+	color: #f00; /* Son seçili öğenin rengi */
+	}
+	</style>
+	<div class="container-scroller">
+		<!-- partial:partials/_navbar.html -->
+		<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+			<div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+				<a class="navbar-brand brand-logo" href="index.html"><img src="~/Ecomfridge/html/images/2yenilogo.png" style="height:80px"  alt="logo"></a>
+				
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-stretch">
+				
+				<ul class="navbar-nav navbar-nav-right">
+					
+					<li class="nav-item d-none d-lg-block full-screen-link">
+						<a class="nav-link">
+							<i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+						</a>
+					</li>
+					<li class="nav-item dropdown">
+						
+						
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+							<i class="mdi mdi-bell-outline"></i>
+							<span class="count-symbol bg-danger"></span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+							<h6 class="p-3 mb-0">Notifications</h6>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-success">
+										<i class="mdi mdi-calendar"></i>
+									</div>
+								</div>
+								<div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
+									<p class="text-gray ellipsis mb-0">
+										Just a reminder that you have an event today
+									</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-warning">
+										<i class="mdi mdi-settings"></i>
+									</div>
+								</div>
+								<div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+									<p class="text-gray ellipsis mb-0">
+										Update dashboard
+									</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-info">
+										<i class="mdi mdi-link-variant"></i>
+									</div>
+								</div>
+								<div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
+									<p class="text-gray ellipsis mb-0">
+										New admin wow!
+									</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<h6 class="p-3 mb-0 text-center">See all notifications</h6>
+						</div>
+					</li>
+					<li class="nav-item nav-logout d-none d-lg-block">
+						<a class="nav-link" href="#">
+							<i class="mdi mdi-power"></i>
+						</a>
+					</li>
+					<li class="nav-item nav-settings d-none d-lg-block">
+						<a class="nav-link" href="#">
+							<i class="mdi mdi-format-line-spacing"></i>
+						</a>
+					</li>
+				</ul>
+				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+					<span class="mdi mdi-menu"></span>
+				</button>
+			</div>
+		</nav>
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			
+			<!-- partial:partials/_sidebar.html -->
+			<nav class="sidebar sidebar-offcanvas" id="sidebar">
+				<br />
+				<br />
+				<br />
+				<div class="left-menu">
+				<ul class="nav">
+
+						<li class="nav-item active">
+						<a class="nav-link" href="/Home/Index/">
+							<span style="color:#f26522" class="menu-title">Ana Sayfaya Dön</span>
+							<i style="color:darkgrey" class="mdi mdi-home menu-icon"></i>
+						</a>
+						
+
+					</li>
+					
+					<li class="nav-item active">
+						<a class="nav-link" href="/Admin/Index/">
+							<span style="color:#f26522" class="menu-title" onclick="isActive(event)">Admin Paneli</span>
+							<i style="color:darkgrey" class="mdi mdi-view-dashboard menu-icon"></i>
+						</a>
+						
+					</li>
+					
+					<li class="nav-item active">
+						<a class="nav-link" href="/ListProduct/Index/">
+								<span style="color:#f26522" class="menu-title" onclick="isActive(event)">Ürünlere Göz At</span>
+							<i style="color:darkgrey" class="mdi mdi-notification-clear-all menu-icon"></i>
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/AddProduct/Index/">
+								<span style="color:#f26522" class="menu-title" onclick="isActive(event)">Ürün Ekle</span>
+							<i style="color:darkgrey" class="mdi mdi-library-plus menu-icon"></i>
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="index.html">
+								<span style="color:#f26522" class="menu-title" onclick="isActive(event)">Ürün Güncelle</span>
+							<i style="color:darkgrey" class="mdi mdi-backup-restore menu-icon"></i>
+						</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/Feedback/Index/">
+								<span style="color:#f26522" class="menu-title" onclick="isActive(event)">İletişim</span>
+							<i style="color:darkgrey" class="mdi mdi-account-multiple menu-icon"></i>
+						</a>
+					</li>
+
+					<li class="nav-item active">
+							<a class="nav-link" href="/Subscribe/Index/">
+								<span style="color:#f26522" class="menu-title" onclick="isActive(event)">Aboneler</span>
+								<i style="color:darkgrey" class="mdi mdi-account-multiple menu-icon"></i>
+							</a>
+					</li>
+					
+					<li class="nav-item active">
+						<a class="nav-link" href="/AddUser/Index/">
+								<span style="color:#f26522" class="menu-title" onclick="isActive(event)">Yeni Yönetici Ekle (ÖZEL)</span>
+							<i style="color:darkgrey" class="mdi mdi-account-plus menu-icon"></i>
+						</a>
+						
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/Login/Index/">
+								<span style="color:darkred" class="menu-title" onclick="isActive(event)">ÇIKIŞ YAP</span>
+							<i style="color:darkgrey" class="mdi mdi-exit-to-app menu-icon"></i>
+						</a>
+					</li>
+					
+					
+	
+					
+				
+				</ul>
+				</div>
+			</nav>
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					
+					
+					@RenderBody()
+					
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="d-sm-flex justify-content-center justify-content-sm-between">
+						<span class="copyright_text">© @DateTime.Now.Year. Design by <a style="font-size:larger" href="https://www.linkedin.com/in/o%C4%9Fuzhan-ulu-23752a226/"><u>Oğuzhan ULU</u></a></span>
+						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted &amp; made with <i class="mdi mdi-heart text-danger"></i></span>
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="~/purple/vendors/js/vendor.bundle.base.js"></script>
+	<script src="~/purple/vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="~/purple/js/off-canvas.js"></script>
+	<script src="~/purple/js/misc.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<script src="~/purple/js/dashboard.js"></script>
+	<!-- End custom js for this page-->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var menuTitles = document.querySelectorAll('.menu-title');
+			menuTitles.forEach(function (menuTitle) {
+				menuTitle.addEventListener('click', function () {
+					// Tüm menü başlıklarından 'active' sınıfını kaldır
+					menuTitles.forEach(function (title) {
+						title.classList.remove('active');
+					});
+					// Tıklanan menü başlığına 'active' sınıfını ekle
+					this.classList.add('active');
+				});
+			});
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿@model List<Products>
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.image-container {
+		overflow: hidden;
+		width: 315px;
+		height: 250px;
+	}
+
+	.resim {
+		transition: transform 1.5s ease;
+	}
+
+	.image-container:hover .resim {
+		transform: scale(1.3);
+	}
+</style>
+
+<div class="text-center" @*style="height:1500px"*@>
+
+	<div id="electronic_main_slider" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<div class="container">
+
+					<hr />
+					<br />
+					<br />
+					<h1 class="fashion_taital">Kategoriye Özel Seçimler</h1>
+					<div class="fashion_section_2">
+						<div class="row">
+							<div class="col-2">
+
+								
+							</div>
+							<br />
+							<br />
+						</div>
+						<div class="row">
+							@foreach (var urun in Model)
+							{
+								<div class="col-lg-4 col-sm-4">
+									<div class="box_main">
+										<h4 class="shirt_text">@urun.Title</h4>
+										<p class="price_text">
+											@if (urun.Categoryid == 1)
+											{
+												<span style="color: black;">Küçük Ev Aletleri</span>
+											}
+											else if (urun.Categoryid == 2)
+											{
+												<span style="color: black;">Elektronik</span>
+											}
+											else if (urun.Categoryid == 3)
+											{
+												<span style="color: black;">Beyaz Eşya</span>
+											}
+											else if (urun.Categoryid == 4)
+											{
+												<span style="color: black;">Isıtma ve Soğutma</span>
+											}
+											<br /> Fiyat:<span style="color: #262626;">@urun.Price</span>
+										</p>
+										<br />
+										<br />
+										<br />
+										<div class="image-container">
+											<a href="/ProductDetails/Index/@urun.id/">
+												<img href="@Url.Action("ProductDetails", "Index", new { id = urun.id })" alt="Resim" class="resim" style="max-height:150px" src="~/images/@urun.Photo">
+											</a>
+										</div>
+										<div class="btn_main">
+											<div class="buy_bt"><a href="ProductDetails/Index/@urun.id">SATIN AL</a></div>
+											<div class="seemore_bt"><a href="#">Devamını Gör</a></div>
+										</div>
+									</div>
+								</div>
+							}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<br />
+
+
+	</div>
+</div>
+<script>
+	function on() {
+		document.getElementById("resimler").style.transform = "scale(1.2)";
+	}
+
+	function off() {
+		document.getElementById("resimler").style.transform = "scale(1)";
+	}
+</script>
+
+

@@ -1,0 +1,12 @@
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\bin\Debug\net6.0\BeyazEsyaCore.deps.json
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\bin\Debug\net6.0\BeyazEsyaCore.dll
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\bin\Debug\net6.0\BeyazEsyaCore.pdb
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.csproj.AssemblyReference.cache
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.AssemblyInfoInputs.cache
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.AssemblyInfo.cs
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.csproj.CoreCompileInputs.cache
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.dll
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\refint\BeyazEsyaCore.dll
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\BeyazEsyaCore.pdb
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaCore\obj\Debug\net6.0\ref\BeyazEsyaCore.dll

@@ -1,0 +1,81 @@
+﻿@model List<Notification>
+@{
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>İletişim | Tablosu</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	@*<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">*@
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">İletişim Tablosu</h3>
+
+					<div class="card-tools">
+						<div class="input-group input-group-sm" style="width: 200px;">
+							<input type="text" name="table_search" id="arama" class="form-control float-right" placeholder="İletişim mail Arama">
+
+							<div class="input-group-append">
+								<button type="submit" style="color:darkgrey" class="btn mdi mdi-account-search">
+									<i class="fas fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body table-responsive p-0" style="height: 600px;">
+					<table class="table table-head-fixed text-nowrap" id="urunler-tablosu">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>İsim</th>
+								<th>Mail Adresi</th>
+								<th>Konu</th>
+								<th>Mesaj</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var urun in Model)
+							{
+								<tr>
+									<td>@urun.id</td>
+									<td>@urun.isim</td>
+									<td>@urun.mail</td>
+									<td>@urun.konu</td>
+									<td><textarea cols="50" rows="3" disabled>@urun.Mesaj</textarea> </td>
+									<td><button type="button" id="silbuton" class="btn btn-dark btn-fw">Yanıt Ver</button></td>
+
+								</tr>
+
+							}
+						</tbody>
+					</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+	</div>
+
+
+	@*<script src="~/AdminPanel/AdminLTE-3.2.0/dist/js/demo.js"></script>
+	<script src="~/AdminPanel/AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+	<script src="~/AdminPanel/AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+
+</body>

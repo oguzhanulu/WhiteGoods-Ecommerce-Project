@@ -1,0 +1,174 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = null;
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="~/Ecomfridge/html/css/bootstrap.min.css">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="~/Ecomfridge/html/css/style.css">
+<!-- Responsive-->
+<link rel="stylesheet" href="~/Ecomfridge/html/css/responsive.css">
+<!-- fevicon -->
+<link rel="icon" href="~/Ecomfridge/html/images/fevicon.png" type="image/gif">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="~/Ecomfridge/html/css/jquery.mCustomScrollbar.min.css">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&amp;display=swap" rel="stylesheet">
+<!-- font awesome -->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  -->
+<!-- owl stylesheets -->
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&amp;display=swap&amp;subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="~/Ecomfridge/html/css/owl.carousel.min.css">
+<link rel="stylesoeet" href="~/Ecomfridge/html/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+<html lang="en">
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AdminLTE 3 | Log in</title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+	<!-- icheck bootstrap -->
+	<link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+
+<body class="login-page" style="min-height: 496.781px;">
+	<div class="logo_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="logo"><img src="~/Ecomfridge/html/images/2yenilogo.png" style="width:150px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="/Home/Index"><b>Ana Sayfaya Dön</b></a>
+		</div>
+		<!-- /.login-logo -->
+		<div class="card">
+			<div class="card-body login-card-body">
+				<p class="login-box-msg">Oturumunuzu başlatmak için giriş yapın</p>
+
+
+				<div class="input-group mb-3">
+					<input type="email" id="email" class="form-control" placeholder="Email">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-envelope"></span>
+						</div>
+					</div>
+				</div>
+				<div class="input-group mb-3">
+					<input type="password" id="password" class="form-control" placeholder="Şifre">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-lock"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					
+					<!-- /.col -->
+					<div class="col-6">
+						<button type="submit" id="btngiris" class="btn btn-primary btn-block">Giriş Yap</button>
+					</div>
+					<!-- /.col -->
+				</div>
+
+
+
+				<!-- /.social-auth-links -->
+
+				<p class="mb-1">
+					<a href="forgot-password.html">Şifremi unuttum</a>
+				</p>
+
+			</div>
+
+			<!-- /.login-card-body -->
+		</div>
+	</div>
+	<br />
+	<br />
+	<!-- /.login-box -->
+	<!-- jQuery -->
+	<script src="../../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../../dist/js/adminlte.min.js"></script>
+
+
+</body>
+</html>
+<script>
+	$(document).ready(function () {
+		$('#btngiris').click(function () { // Butona tıklama olayı eklendi
+			var password = $('#password').val();
+			var email = $('#email').val();
+			;
+			var Message = {
+				password: password,
+				email: email
+
+			};
+
+			$.ajax({
+				type: 'POST',
+				url: '/Login/LoginControl',
+				contentType: 'application/json',
+				data: JSON.stringify(Message),
+				success: function (response) {
+					Swal.fire({
+						title: "BAŞARILI",
+						text: "Giriş Kabul Edildi",
+						showConfirmButton: false,
+						icon: "success"
+					});
+					setTimeout(function () {
+						window.location.href = '/Admin/Index/'
+					}, 1000);
+					
+
+				},
+				error: function (xhr, status, error) {
+
+					Swal.fire({
+						title: "HATA",
+						text: "Giriş Reddedildi!",
+						icon: "error"
+					});
+					setTimeout(function () {
+						location.reload();
+					}, 2000);
+
+				}
+			});
+		});
+	});
+	
+
+</script>

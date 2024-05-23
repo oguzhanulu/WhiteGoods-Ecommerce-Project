@@ -1,0 +1,469 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+	@model AdminDatas
+
+}
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin | Paneli </title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+	<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+	@*<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/dist/css/adminlte.min.css">*@
+	<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+
+
+
+	@*<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">*@
+	@*<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/dist/css/adminlte.min.css">
+	<link rel="stylesheet" href="~/AdminPanel/AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">*@
+
+
+	<style>
+		/* FONT IMPORTS */
+
+
+
+.icon {
+  font-family: "Material Icons", serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+}
+
+/* VARIABLES */
+
+:root {
+  --main-color: #1a8fff;
+  --main-color-darken: #0176e6;
+  --text-color: #777;
+  --text-color-light: #ccc;
+  --border-color: #eee;
+  --bg-color: #f9f9f9;
+  --neutral-color: #fff;
+}
+
+/* GENERAL */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-color);
+  background: var(--bg-color);
+  position: relative;
+}
+
+header {
+  display: block;
+  width: 100%;
+  padding: 1.75em 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--neutral-color);
+}
+
+header #logo {
+  font-size: 175%;
+  text-align: center;
+  color: var(--main-color);
+  line-height: 1;
+}
+
+header #logo .icon {
+  padding-right: 0.25em;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2.5em;
+  max-width: 50em;
+}
+
+/* GRID */
+
+.row {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.row-middle {
+  align-items: center;
+}
+
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.col-start {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.col-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.col-end {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Calendar */
+
+.calendar {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: var(--neutral-color);
+  border: 1px solid var(--border-color);
+}
+
+.calendar .header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 115%;
+  padding: 1.5em 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .header .icon {
+  cursor: pointer;
+  transition: 0.15s ease-out;
+}
+
+.calendar .header .icon:hover {
+  transform: scale(1.75);
+  transition: 0.25s ease-out;
+  color: var(--main-color);
+}
+
+.calendar .header .icon:first-of-type {
+  margin-left: 1em;
+}
+
+.calendar .header .icon:last-of-type {
+  margin-right: 1em;
+}
+
+.calendar .days {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--text-color-light);
+  font-size: 70%;
+  padding: 0.75em 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .body .cell {
+  position: relative;
+  height: 5em;
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+  background: var(--neutral-color);
+  transition: 0.25s ease-out;
+}
+
+.calendar .body .selected {
+  border-left: 10px solid transparent;
+  border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
+  border-image-slice: 1;
+}
+
+.calendar .body .row {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .body .row:last-child {
+  border-bottom: none;
+}
+
+.calendar .body .cell:last-child {
+  border-right: none;
+}
+
+.calendar .body .cell .number {
+  position: absolute;
+  font-size: 82.5%;
+  line-height: 1;
+  top: 0.75em;
+  right: 0.75em;
+  font-weight: 700;
+}
+
+.calendar .body .disabled {
+  color: var(--text-color-light);
+  pointer-events: none;
+}
+
+.calendar .body .cell .bg {
+  font-weight: 700;
+  line-height: 1;
+  color: var(--main-color);
+  opacity: 0;
+  font-size: 8em;
+  position: absolute;
+  top: -0.2em;
+  right: -0.05em;
+  transition: 0.25s ease-out;
+  letter-spacing: -0.07em;
+}
+
+.calendar .body .selected .bg {
+  opacity: 0.05;
+  transition: 0.5s ease-in;
+}
+
+.calendar .body .col {
+  flex-grow: 0;
+  flex-basis: calc(100% / 7);
+  width: calc(100% / 7);
+}
+
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  display: block;
+  margin: 30px auto;
+  padding: 0.5rem 1.5rem;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  background-color: var(--main-color);
+  color: #ecf0f1;
+  transition: background-color 0.3s box-shadow 1s;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: var(--main-color-darken);
+}
+
+button:active {
+  box-shadow: none;
+}
+
+	</style>
+
+	@*<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">*@
+
+
+</head>
+
+<body>
+	<div id="app"></div>
+	<div class="page-header">
+		<h3 class="page-title">
+			<span class="page-title-icon bg-gradient-primary text-white mr-2">
+				<i class="mdi mdi-home"></i>
+			</span>
+			Dashboard
+		</h3>
+		<nav aria-label="breadcrumb">
+			<ul class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page">
+					<span></span>Overview
+					<i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-danger card-img-holder text-white">
+				<div class="card-body">
+					<img src="~/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+					<h4 class="font-weight-normal mb-3">
+						Toplam Ürün Sayımız
+						<i class="mdi mdi-chart-line mdi-24px float-right"></i>
+					</h4>
+					<h2 class="mb-5">@Model.UrunSayi</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-info card-img-holder text-white">
+				<div class="card-body">
+					<img src="~/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+					<h4 class="font-weight-normal mb-3">
+						Toplam Abone Sayısı
+						<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+					</h4>
+					<h2 class="mb-5">@Model.AboneSayisi</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 stretch-card grid-margin">
+			<div class="card bg-gradient-success card-img-holder text-white">
+				<div class="card-body">
+					<img src="~/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+					<h4 class="font-weight-normal mb-3">
+						Toplam İleti Sayısı
+						<i class="mdi mdi-diamond mdi-24px float-right"></i>
+					</h4>
+					<h2 class="mb-5">@Model.iletisayisi</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 grid-margin">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Recent Tickets</h4>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>
+										Assignee
+									</th>
+									<th>
+										Subject
+									</th>
+									<th>
+										Status
+									</th>
+									<th>
+										Last Update
+									</th>
+									<th>
+										Tracking ID
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<img src="images/faces/face1.jpg" class="mr-2" alt="image">
+										David Grey
+									</td>
+									<td>
+										Fund is not recieved
+									</td>
+									<td>
+										<label class="badge badge-gradient-success">DONE</label>
+									</td>
+									<td>
+										Dec 5, 2017
+									</td>
+									<td>
+										WD-12345
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="images/faces/face2.jpg" class="mr-2" alt="image">
+										Stella Johnson
+									</td>
+									<td>
+										High loading time
+									</td>
+									<td>
+										<label class="badge badge-gradient-warning">PROGRESS</label>
+									</td>
+									<td>
+										Dec 12, 2017
+									</td>
+									<td>
+										WD-12346
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="images/faces/face3.jpg" class="mr-2" alt="image">
+										Marina Michel
+									</td>
+									<td>
+										Website down for one week
+									</td>
+									<td>
+										<label class="badge badge-gradient-info">ON HOLD</label>
+									</td>
+									<td>
+										Dec 16, 2017
+									</td>
+									<td>
+										WD-12347
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="images/faces/face4.jpg" class="mr-2" alt="image">
+										John Doe
+									</td>
+									<td>
+										Loosing control on server
+									</td>
+									<td>
+										<label class="badge badge-gradient-danger">REJECTED</label>
+									</td>
+									<td>
+										Dec 3, 2017
+									</td>
+									<td>
+										WD-12348
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>						
+
+	<script src="~/AdminPanel/AdminLTE-3.2.0/plugins/moment/moment.min.js"></script>
+	<script src="~/AdminPanel/AdminLTE-3.2.0/plugins/fullcalendar/main.js"></script>
+	
+
+
+</body>
+
+
+
+
+
+
+
+

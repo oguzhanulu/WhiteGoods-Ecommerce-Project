@@ -1,0 +1,206 @@
+﻿@model List<Products>
+@{
+	Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ürünler | Tablosu</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	@*<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">*@
+</head>
+<body>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Ürün Görüntüleme Tablosu</h3>
+
+					<div class="card-tools">
+						<div class="input-group input-group-sm" style="width: 250px;">
+							<input type="text" name="table_search" id="arama" class="form-control float-right" placeholder="Ürün Arama">
+
+							<div class="input-group-append">
+								<button type="submit" class="btn mdi mdi-account-search">
+									<i class="fas fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body table-responsive p-0" style="height: 300px;">
+					<table class="table table-head-fixed text-nowrap" id="urunler-tablosu">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Ürün Adı</th>
+								<th>Ürün Kategorisi</th>
+								<th>Ürün Fiyatı</th>
+								<th>Ürün Rengi</th>
+								<th>Ürün Durumu</th>
+								<th>Ürün Eklenme Tarihi</th>
+								<th>Ürün Sil</th>
+								<th>Ürün Düzenle</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var urun in Model)
+							{
+								<tr>
+									<td>@urun.id</td>
+									<td>@urun.Title</td>
+									<td>@urun.Categoryid</td>
+									<td>@urun.Price</td>
+									<td>@urun.Color</td>
+									<td>@urun.isActive</td>
+									<td>@urun.Date</td>
+									<td><button type="button" id="silbuton" class="btn btn-danger btn-fw">Ürünü Sil</button></td>
+									<td><button type="button" id="düzenlebuton" class="btn btn-dark btn-fw">Ürünü Düzenle</button></td>
+
+								</tr>
+
+							}
+						</tbody>
+					</table>
+				</div>
+
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+	</div>
+	<br />
+	<br />
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">Ürün Düzenleme</h4>
+
+					<div class="card-tools">
+						<div class="input-group input-group-sm" style="width: 250px;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="form-group">
+		<label>Ürün Başlığı</label>
+		<input id="baslik" type="text" class="form-control form-control-sm" placeholder="Ürün Başlığı">
+	</div>
+	<div class="form-group">
+		<label>Ürün Ön Bilgi</label>
+		<input id="onbilgi" type="text" class="form-control form-control-sm" placeholder="Ürün Ön Bilgi">
+	</div>
+	<div class="form-group">
+		<label>Ürün Fiyatı</label>
+		<input id="fiyat" type="number" class="form-control form-control-sm" placeholder="Ürün Fiyatı">
+	</div>
+	<div class="form-group">
+		<label>Ürün Rengi</label>
+
+		<select class="form-control" style="width:200px;background-color:#34495e;color:white" id="renk">
+			<option value="Kırmızı"> Kırmızı </option>
+			<option value="Mavi"> Mavi </option>
+			<option value="Beyaz"> Beyaz </option>
+			<option value="Siyah"> Siyah </option>
+			<option value="Gri"> Gri </option>
+			<option value="Kahverengi"> Kahverengi </option>
+			<option value="Sarı"> Sarı </option>
+			<option value="Mor"> Mor </option>
+		</select>
+	</div>
+
+	<label>Kategori</label>
+	<div>
+		<select class="form-control" style="width:200px;background-color:#34495e;color:white" id="kategori">
+			<option value="1"> Küçük Ev Aletleri </option>
+			<option value="2"> Elektronik </option>
+			<option value="3"> Beyaz Eşya </option>
+			<option value="4"> Isıtma ve Soğutma </option>
+
+		</select>
+	</div>
+	<br />
+
+	<div class="form-group">
+		<label>Ürün Fotoğrafı</label>
+		<input type="file" id="foto" name="photo" accept="image/*">
+
+	</div>
+	<div class="form-group">
+		<label>Ürün Detayları</label>
+		<br />
+		<textarea id="aciklama" name="inputText" rows="10" style="width:900px"></textarea>
+	</div>
+
+
+
+	@*<script src="~/AdminPanel/AdminLTE-3.2.0/dist/js/demo.js"></script>
+	<script src="~/AdminPanel/AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+	<script src="~/AdminPanel/AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+
+</body>
+<script>
+	$(document).ready(function () {
+		// Silme butonuna tıklama işlemini dinle
+		$('#urunler-tablosu').on('click', '#silbuton', function () {
+			// Silinecek ürünün ID'sini al
+			var id = $(this).closest('tr').find('td:first').text();
+			console.log(id)
+
+			Swal.fire({
+				title: "Emin misiniz?",
+				text: "Ürün siliyorsunuz.",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Evet, Sil",
+				cancelButtonText: "İptal"
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: '/ListProduct/DeleteProduct',
+						method: 'POST',
+						contentType: 'application/json', // JSON verisi gönderildiğini belirtin
+						data: JSON.stringify({ id: id }), // Veriyi JSON formatına dönüştürün
+						success: function (response) {
+							Swal.fire("Silindi!", "Ürün Başarıyla Silindi", "success");
+						},
+						error: function (xhr, status, error) {
+							Swal.fire("Hata!", "Üzgünüz, bir hata oluştu: " + error, "error");
+						}
+					});
+
+				}
+			});
+		});
+	});
+
+	document.addEventListener('DOMContentLoaded', function () {
+		var aramaInput = document.getElementById('arama');
+		var tabloSatirlari = document.querySelectorAll('#urunler-tablosu tbody tr');
+
+		aramaInput.addEventListener('input', function () {
+			var aramaTerimi = aramaInput.value.trim().toLowerCase();
+
+			tabloSatirlari.forEach(function (satir) {
+				var urunAdi = satir.cells[1].textContent.trim().toLowerCase();
+				var gizleGoster = urunAdi.includes(aramaTerimi);
+
+				satir.style.display = gizleGoster ? 'table-row' : 'none';
+			});
+		});
+	});
+</script>

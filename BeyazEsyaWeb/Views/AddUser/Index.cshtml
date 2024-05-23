@@ -1,0 +1,146 @@
+﻿@model List<Users>
+@{
+
+	Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+<head>
+	<title>Ürün Ekleme | Tablosu</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+
+<!-- partial -->
+<div class="form-group">
+	<label>Kullanıcı İsmi</label>
+	<input id="isim" type="text" class="form-control form-control-sm" placeholder="İsim Giriniz">
+</div>
+<div class="form-group">
+	<label>Kullanıcı Mail Adresi</label>
+	<input id="mailadres" type="text" class="form-control form-control-sm" placeholder="Mail Adresi Giriniz">
+</div>
+<div class="form-group">
+	<label>Kullanıcı Giriş Şifresi</label>
+	<input id="sifre" type="text" class="form-control form-control-sm" placeholder="Giriş Şifresi Belirleyiniz">
+</div>
+<div class="form-group">
+	<label>Kullanıcı Yetki Seviyesi Belirleyin</label>
+
+	<select id="renk">
+		<option value="Kırmızı"> Admin </option>
+		<option value="Mavi"> SuperAdmin </option>
+
+	</select>
+</div>
+
+
+
+
+<br />
+<button id="btnekle" type="button" class="btn btn-dark btn-fw">Kullanıcı Ekle</button>
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Kullanıcı Tablosu</h3>
+
+
+			</div>
+		</div>
+
+
+
+		<!-- /.card-header -->
+		<div class="card-body table-responsive p-0" style="height: 600px;">
+			<table class="table table-head-fixed text-nowrap" id="urunler-tablosu">
+				<thead>
+					<tr>
+						<th>Kullanıcı İsim</th>
+						<th>Kullanıcı Mail Adresi</th>
+
+
+
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var users in Model)
+					{
+					<tr>
+					<td>@users.name</td>
+					<td>@users.email</td>
+					
+
+
+					</tr>
+
+					}
+				</tbody>
+			</table>
+		</div>
+		<!-- /.card-body -->
+	</div>
+	<!-- /.card -->
+</div>
+
+
+<script>
+	$(document).ready(function () {
+		$('#btnekle').click(function () { // Butona tıklama olayı eklendi
+			var Name = $('#isim').val();
+			var Email = $('#mailadres').val();
+			var Password = $('#sifre').val();
+
+			;
+
+			var Message = {
+				Name: Name,
+				Password: Password,
+				Email: Email
+
+			};
+
+			$.ajax({
+				type: 'POST',
+				url: '/AddUser/AddUser',
+				contentType: 'application/json',
+				data: JSON.stringify(Message),
+				success: function (data) {
+					Swal.fire({
+						title: "Admin Ekleme",
+						text: "Yeni Admin Ekliyorsunuz!",
+						icon: "success",
+						showCancelButton: true,
+						confirmButtonColor: "#3085d6",
+
+						confirmButtonText: "EVET,Ekle"
+					}).then((result) => {
+						if (result.isConfirmed) {
+							Swal.fire({
+								position: "top-end",
+								icon: "success",
+								title: "Yeni Kullanıcı Eklendi!",
+								showConfirmButton: false,
+								timer: 1500
+							})
+							setTimeout(function () {
+								window.location.href = "/AddUser/Index";
+							}, 2000);
+						}
+						;
+
+					});
+				},
+				error: function (xhr, status, error) {
+					console.error('AJAX error:', error);
+					// Hata durumunda istediğiniz işlemleri yapabilirsiniz
+				}
+			});
+		});
+	});
+</script>

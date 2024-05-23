@@ -1,0 +1,171 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<head>
+	<title>Ürün Ekleme | Tablosu</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+
+<!-- partial -->
+<div class="form-group">
+	<label>Ürün Başlığı</label>
+	<input id="baslik" type="text" class="form-control form-control-sm" placeholder="Ürün Başlığı">
+</div>
+<div class="form-group">
+	<label>Ürün Ön Bilgi</label>
+	<input id="onbilgi" type="text" class="form-control form-control-sm" placeholder="Ürün Ön Bilgi">
+</div>
+<div class="form-group">
+	<label>Ürün Fiyatı</label>
+	<input id="fiyat" type="number" class="form-control form-control-sm" placeholder="Ürün Fiyatı">
+</div>
+<div class="form-group">
+	<label>Ürün Rengi</label>
+
+	<select class="form-control" style="width:200px;background-color:#34495e;color:white" id="renk">
+		<option value="Kırmızı"> Kırmızı </option>
+		<option value="Mavi"> Mavi </option>
+		<option value="Beyaz"> Beyaz </option>
+		<option value="Siyah"> Siyah </option>
+		<option value="Gri"> Gri </option>
+		<option value="Kahverengi"> Kahverengi </option>
+		<option value="Sarı"> Sarı </option>
+		<option value="Mor"> Mor </option>
+	</select>
+</div>
+<div class="form-group">
+	<label>Kategori</label>
+
+	<select class="form-control" style="width:200px;background-color:#34495e;color:white" id="kategori">
+		<option value="1"> Küçük Ev Aletleri </option>
+		<option value="2"> Elektronik </option>
+		<option value="3"> Beyaz Eşya </option>
+		<option value="4"> Isıtma ve Soğutma </option>
+
+	</select>
+
+</div>
+<div class="form-group">
+	<label>Ürün Fotoğrafı</label>
+	<input type="file" id="foto" name="photo" accept="image/*">
+	@*<div class="input-group" style="width:500px">
+		<div class="custom-file">
+			<input type="file" class="custom-file-input" name="photo" id="foto">
+			<label class="custom-file-label" for="exampleInputFile">Choose file</label>
+		</div>
+		<div class="input-group-append">
+			<span class="input-group-text">Upload</span>
+		</div>
+	</div>*@
+
+</div>
+<div class="form-group">
+	<label>Ürün Detayları</label>
+	<br />
+	<textarea id="aciklama" name="inputText" rows="10" style="width:900px"></textarea>
+</div>
+
+
+<br />
+<button id="btnekle" type="button" class="btn btn-dark btn-fw">Ürün Ekle</button>
+
+
+<script>
+	$(document).ready(function () {
+		$('#btnekle').click(function () { // Butona tıklama olayı eklendi
+			var Title = $('#baslik').val();
+			var Details = $('#onbilgi').val();
+			var Price = $('#fiyat').val();
+			var Color = $('#renk').val();
+			var Categoryid = $('#kategori').val();
+			//var Photo = $('#foto').val();
+
+
+			var ProductDetails = $('#aciklama').val();
+			;
+
+			var Message = {
+				Title: Title,
+				Details: Details,
+				Price: Price,
+				Color: Color,
+				Categoryid: Categoryid,
+				//Photo: Photo,
+				ProductDetails: ProductDetails
+
+
+
+			};
+
+			$.ajax({
+				type: 'POST',
+				url: '/AddProduct/AddProduct',
+				contentType: 'application/json',
+				data: JSON.stringify(Message),
+				success: function (data) {
+					Swal.fire({
+						title: "Ürün Ekleme",
+						text: "Ürünü Ekliyorsunuz!",
+						icon: "success",
+						showCancelButton: true,
+						confirmButtonColor: "#3085d6",
+
+						confirmButtonText: "EVET,Ekle"
+					}).then((result) => {
+						if (result.isConfirmed) {
+							Swal.fire({
+								position: "top-end",
+								icon: "success",
+								title: "Ürün Eklendi!",
+								showConfirmButton: false,
+								timer: 1500
+							})
+							setTimeout(function () {
+								window.location.href = "/AddProduct/Index";
+							}, 2000);
+						}
+						;
+
+					});
+				},
+				error: function (xhr, status, error) {
+					console.error('AJAX error:', error);
+					// Hata durumunda istediğiniz işlemleri yapabilirsiniz
+				}
+			});
+		});
+	});
+
+
+	$(document).ready(function () {
+		$("#foto").change(function () {
+			var formData = new FormData();
+			formData.append("photo", $("#foto")[0].files[0]);
+
+			$.ajax({
+				url: "/AddProduct/Upload",
+				type: "POST",
+				data: formData,
+				processData: false,  // FormData işleme tabi tutulmasın
+				contentType: false,  // FormData'nın içeriği dosya olduğu için belirtilmemeli
+				success: function (response) {
+					console.log("Başarılı:", response);
+				},
+				error: function (xhr, status, error) {
+					console.error("Hata:", error);
+				}
+			});
+		});
+	});
+</script>

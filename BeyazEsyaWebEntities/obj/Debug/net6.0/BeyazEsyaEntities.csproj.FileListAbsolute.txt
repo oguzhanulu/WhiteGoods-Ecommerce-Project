@@ -1,0 +1,12 @@
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\bin\Debug\net6.0\BeyazEsyaEntities.deps.json
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\bin\Debug\net6.0\BeyazEsyaEntities.dll
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\bin\Debug\net6.0\BeyazEsyaEntities.pdb
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.csproj.AssemblyReference.cache
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.AssemblyInfoInputs.cache
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.AssemblyInfo.cs
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.csproj.CoreCompileInputs.cache
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.dll
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\refint\BeyazEsyaEntities.dll
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\BeyazEsyaEntities.pdb
+C:\Users\Oğuzhan\source\repos\beyaz_esya\BeyazEsyaWebEntities\obj\Debug\net6.0\ref\BeyazEsyaEntities.dll
