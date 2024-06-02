@@ -16,6 +16,14 @@ HAKKIMIZDA SAYFASI / ABOUT US PAGE
 
 ![iletişim](https://github.com/oguzhanulu/WhiteGoods-Ecommerce-Project/assets/108179202/7113f7c4-ed58-4213-a1c8-c04567404004)
 
+MESAJ GÖNDERME UYARISI / WARNING TO SEND MESSAGES
+
+![MESAJ GÖNDERME](https://github.com/oguzhanulu/WhiteGoods-Ecommerce-Project/assets/108179202/ccff66a6-034a-4091-9f21-61763db73227)
+
+ABONE OLMA UYARISI / SUBSCRIPTION WARNING
+
+![abone deneme](https://github.com/oguzhanulu/WhiteGoods-Ecommerce-Project/assets/108179202/7214ec33-1e16-4e4e-a67d-a65f296d2321)
+
 GİRİŞ SAYFASI / LOGIN PAGE
 
 ![login](https://github.com/oguzhanulu/WhiteGoods-Ecommerce-Project/assets/108179202/55a3df4d-2770-4714-98ad-45c05c7b19cd)
